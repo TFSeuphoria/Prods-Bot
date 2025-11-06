@@ -24,6 +24,10 @@ module.exports = {
         // Load jerseys
         const jerseys = JSON.parse(fs.readFileSync(jerseysPath, "utf8"));
 
+        if (jerseys[number] === "Retired") {
+            return interaction.reply({ content: `Number ${number} has been retired and cannot be used.`, ephemeral: true });
+        }
+
         if (jerseys[number] !== "open") {
             return interaction.reply({ content: `Number ${number} is already taken.`, ephemeral: true });
         }
